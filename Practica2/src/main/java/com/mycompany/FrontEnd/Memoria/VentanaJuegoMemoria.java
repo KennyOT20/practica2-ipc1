@@ -4,7 +4,6 @@
  */
 package com.mycompany.FrontEnd.Memoria;
 
-import com.mycompany.FrontEnd.FrontendPrincipal.VentanaPrincipal;
 import java.awt.Color;
 import javax.swing.JPanel;
 
@@ -12,12 +11,10 @@ import javax.swing.JPanel;
  *
  * @author Kenny
  */
-public class InterfazMemoria extends JPanel {
+public class VentanaJuegoMemoria extends JPanel {
     
-    private final VentanaPrincipal ventanaInicial;
     
-    public InterfazMemoria(VentanaPrincipal ventanaInicial){
-        this.ventanaInicial = ventanaInicial;
+    public VentanaJuegoMemoria(PanelContenedorMemoria memoria){
         iniciarComponentes();
     }
     

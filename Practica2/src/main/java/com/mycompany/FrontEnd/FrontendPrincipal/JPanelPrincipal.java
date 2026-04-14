@@ -54,7 +54,7 @@ public class JPanelPrincipal extends JPanel {
     
     private void iniciarComponentes(){
         this.setBackground(Color.RED);
-       this.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());
     }
     
     private void colocarTitulo(){
@@ -125,7 +125,12 @@ public class JPanelPrincipal extends JPanel {
     }
     
     private void accionMemoria(){
-        botonMemoria.addActionListener(e ->ventanaPrincipal.mostrarPaneles("MEMORIAS") );
+        
+        botonMemoria.addActionListener(e -> {
+                ventanaPrincipal.irAMemorias();
+                ventanaPrincipal.setTitle("Memorias");
+        } );
+       
     }
     
     private void accionHunting(){

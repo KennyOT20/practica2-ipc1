@@ -23,6 +23,7 @@ import javax.swing.JPanel;
  */
 public class MenuMemoria extends JPanel {
     
+    private final PanelContenedorMemoria panelContenedor;
     private final VentanaPrincipal ventanaPrincipal;
     private final JPanel panelBotones;
     private final JButton botonJuego;
@@ -32,7 +33,9 @@ public class MenuMemoria extends JPanel {
     private final JButton botonSalir;
     private final JLabel labelTitulo;
     
-    public MenuMemoria(VentanaPrincipal ventanaPrincipal){
+    public MenuMemoria(PanelContenedorMemoria panelContenedor, VentanaPrincipal ventanaPrincipal){
+        this.ventanaPrincipal = ventanaPrincipal;
+        this.panelContenedor = panelContenedor;
         this.panelBotones = new JPanel();
         this.botonAcercaDe = new JButton();
         this.botonAyuda = new JButton();
@@ -40,21 +43,24 @@ public class MenuMemoria extends JPanel {
         this.botonJuego = new JButton();
         this.botonReportes = new JButton();
         this.labelTitulo = new JLabel();
-        this.ventanaPrincipal = ventanaPrincipal;
+
         
         iniciarPanel();
         ajustarBotones();
         colocarBotones();
         
-        accionesBoton();
+        botonInicio();
+        botonSalir();
     }
     
     private void iniciarPanel(){
-        labelTitulo.setText("MENU DE MEMORIA");
+        this.setLayout(new BorderLayout());
+        labelTitulo.setText("MEMORIA");
         labelTitulo.setFont(new Font("Arial", Font.BOLD, 72));
         labelTitulo.setHorizontalAlignment(JLabel.CENTER);
-        this.setForeground(Color.darkGray);
-        this.setLayout(new BorderLayout());
+        this.add(labelTitulo, BorderLayout.NORTH);
+        this.setBackground(Color.RED);
+        this.setForeground(Color.YELLOW);
     }
     
     private void colocarBotones(){
@@ -108,7 +114,7 @@ public class MenuMemoria extends JPanel {
      private void editarColoresBotones(){
         botonJuego.setBackground(Color.GREEN);
         botonReportes.setBackground(Color.CYAN);
-        botonAyuda.setBackground(Color.BLUE);
+        botonAyuda.setBackground(Color.MAGENTA);
         botonAcercaDe.setBackground(Color.GRAY);
         botonSalir.setBackground(Color.red);
     }
@@ -116,19 +122,27 @@ public class MenuMemoria extends JPanel {
      private void ajustarBotones(){
          JPanel contenedor = new JPanel(new GridBagLayout());
          
-        panelBotones.setBackground(Color.GREEN);
+        panelBotones.setBackground(Color.blue);
         panelBotones.setLayout(new BoxLayout(panelBotones, BoxLayout.Y_AXIS));
         panelBotones.add(Box.createRigidArea(new Dimension(0 , 20)));
         contenedor.add(panelBotones);
-        contenedor.setBackground(Color.GREEN);
+        contenedor.setBackground(Color.blue);
         this.add(contenedor, BorderLayout.CENTER);
          
      }
      
-     private void accionesBoton(){
-        botonJuego.addActionListener( e -> ventanaPrincipal.mostrarPaneles("INICIO MEMORIA"));
-        botonSalir.addActionListener(e -> ventanaPrincipal.mostrarPaneles("MENU INICIAL"));
+     private void botonInicio(){
+         botonJuego.addActionListener(e ->{
+             ventanaPrincipal.setTitle("Datos de Memoria");
+             panelContenedor.recibirDatos();
+         });
      }
    
+     private void botonSalir(){
+         botonSalir.addActionListener(e -> {
+           ventanaPrincipal.setTitle("Menu Principal");
+           ventanaPrincipal.mostrarPaneles("MENU INICIAL");
+            });
+     }
     
 }
