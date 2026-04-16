@@ -68,5 +68,16 @@ public class Tablero {
         
     }
     
+
+    public int getCantidadFilas() {
+        return cantidadFilas;
+    }
+
+    public int getCantidadColumnas() {
+        return cantidadColumnas;
+    }
+    
+    
+    
     
 }

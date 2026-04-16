@@ -5,12 +5,13 @@
 package com.mycompany.FrontEnd.Memoria;
 
 import com.mycompany.BackEnd.Memoria.Controladores.ControladorDatos;
-import com.mycompany.FrontEnd.FrontendPrincipal.VentanaPrincipal;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -19,60 +20,175 @@ import javax.swing.JTextField;
  * @author Kenny
  */
 public class PanelDatos extends JPanel {
+
+    private ControladorDatos contradorDatos;
+    private final PanelContenedorMemoria contenedor;
     
-    private final ControladorDatos obtenerNombres;
+    private final JComboBox<String> dificultades;
+    private final JPanel panelTitulo;
+    private final JPanel panelNombres;
+
+    private final JLabel titulo;
     private final JLabel nombreJugador1;
     private final JLabel nombreJugador2;
+    private final JLabel dificultad;
+
     private final JTextField datoJugador1;
     private final JTextField datoJugador2;
+
     private final JButton botonIniciar;
     private final JButton botonRegresar;
 
-    public PanelDatos(PanelContenedorMemoria memoria){
+    public PanelDatos(PanelContenedorMemoria contenedo) {
+        this.contenedor = contenedo;
+        this.dificultades = new JComboBox<>();
+        this.panelTitulo = new JPanel();
+        this.panelNombres = new JPanel();
+        this.dificultad = new JLabel();
+        this.titulo = new JLabel();
         this.nombreJugador1 = new JLabel();
         this.nombreJugador2 = new JLabel();
         this.datoJugador1 = new JTextField();
         this.datoJugador2 = new JTextField();
-        this.botonIniciar = new JButton();
-        this.botonRegresar = new JButton();
-        this.obtenerNombres  = new ControladorDatos();
-        
+        this.botonIniciar = new JButton("Iniciar");
+        this.botonRegresar = new JButton("Salir");
+
         iniciarComponentes();
-        colocarComponentes();
+        configurarPaneles();
+        inicializarDificultades();
+        configurarComponentes();
+        agregarComponentes();
+        botonIniciarJuego();
+        botonSalir();
+    }
+
+    @Override
+    public void doLayout() {
+        super.doLayout();
+
+        panelTitulo.setBounds(0, 0, getWidth(), 120);
+
+        int anchoPanel = 600;
+        int altoPanel = 300;
+
+        int x = (getWidth() - anchoPanel) / 2;
+        int y = 150;
+
+        panelNombres.setBounds(x, y, anchoPanel, altoPanel);
     }
     
-    private void iniciarComponentes(){
-       
+    private void iniciarComponentes() {
+        setLayout(null);
+        setBackground(Color.GRAY);
     }
-    
-    private void editarLabels(){
-        BorderLayout borderLayout = new BorderLayout();
+
+    private void configurarPaneles() {
+
+        this.setForeground(Color.blue);
+        panelTitulo.setBounds(0, 0, 1000, 120);
+        panelTitulo.setBackground(Color.RED);
+        panelTitulo.setLayout(new BorderLayout());
+
+        panelNombres.setBounds(0, 120, 1000, 400);
+        panelNombres.setLayout(null);
+        panelNombres.setBackground(Color.GRAY);
+    }
+
+    private void configurarComponentes() {
+
+        titulo.setText("NOMBRE DE JUGADORES");
+        titulo.setFont(new Font("Arial", Font.BOLD, 40));
+        titulo.setForeground(Color.BLACK);
+        titulo.setHorizontalAlignment(JLabel.CENTER);
+
+        nombreJugador1.setText("Jugador 1:");
+        nombreJugador2.setText("Jugador 2:");
+        dificultad.setText("Dificultad:");
+
+        nombreJugador1.setFont(new Font("Arial", Font.BOLD, 28));
+        nombreJugador2.setFont(new Font("Arial", Font.BOLD, 28));
+        dificultad.setFont(new Font("Arial", Font.BOLD, 28));
+
+        nombreJugador1.setBounds(100, 40, 200, 40);
+        datoJugador1.setBounds(300, 40, 250, 40);
+
+        nombreJugador2.setBounds(100, 100, 200, 40);
+        datoJugador2.setBounds(300, 100, 250, 40);
+
+        dificultad.setBounds(100, 160, 200, 40);
+        dificultades.setBounds(300, 160, 250, 40);
+
+        botonRegresar.setBounds(100, 230, 150, 40);
+        botonIniciar.setBounds(400, 230, 150, 40);
         
-        nombreJugador1.setText("Nombre de jugador 1: ");
-        nombreJugador2.setText("Nombre de jugador 2: ");
-       
-        nombreJugador1.setBackground(Color.red);
-        nombreJugador2.setBackground(Color.blue);
+        botonRegresar.setBackground(Color.PINK);
+        botonIniciar.setBackground(Color.GREEN);
+    }
+
+    private void agregarComponentes() {
+
+        panelTitulo.add(titulo, BorderLayout.CENTER);
+
+        panelNombres.add(nombreJugador1);
+        panelNombres.add(nombreJugador2);
+        panelNombres.add(datoJugador1);
+        panelNombres.add(datoJugador2);
+        panelNombres.add(dificultad);
+        panelNombres.add(dificultades); 
+        panelNombres.add(botonRegresar);
+        panelNombres.add(botonIniciar);
         
-        nombreJugador1.setLayout(borderLayout);
-        nombreJugador2.setLayout(borderLayout);
-        
-        nombreJugador1.setFont(new Font(("Arial"), Font.BOLD, 38));
-        nombreJugador2.setFont(new Font("Arial", Font.BOLD, 38));
+        panelNombres.setForeground(Color.pink);
+
+        add(panelTitulo);
+        add(panelNombres);
     }
     
-    private void editarTextFields(){
-        datoJugador1.setBackground(Color.white);
-        datoJugador2.setBackground(Color.WHITE);
-    }
-    
-    private void colocarComponentes(){
-        editarLabels();
-        editarTextFields();
+    /**
+     * A partir de este metodo para abajo se encargan de validar y manejar los eventos de la ventana
+     */
+    private void botonIniciarJuego(){
         
-        this.add(nombreJugador1, BorderLayout.SOUTH);
-        this.add(nombreJugador2, BorderLayout.EAST);
+        botonIniciar.addActionListener(e -> { 
+                if(entradaValida() == true){
+                    enviarDatos();
+                    contenedor.getInterfazJuego().obtenerDatos(contradorDatos);
+                    contenedor.iniciarJuego();
+                } else {
+                    manejarValidacio();
+                }
+        });
+    }
+
+    private void botonSalir(){
+        botonRegresar.addActionListener(e -> {contenedor.irAMenuMemoria();});
     }
     
+    private void manejarValidacio(){
+        JOptionPane.showMessageDialog(this, "Error, debe de llenar todos los datos");
+    }
     
+    private void enviarDatos(){
+        String jugador1 = datoJugador1.getText();
+        String jugado2 = datoJugador2.getText();
+        String nivel = (String) dificultades.getSelectedItem();
+        
+        contradorDatos = new ControladorDatos();
+        
+        contradorDatos.getJugador1().setNombreJugador(jugador1);
+        contradorDatos.getJugador2().setNombreJugador(jugado2);
+        contradorDatos.setDificultad(nivel);
+        
+        contradorDatos.construirPartida();
+    }
+    
+    private boolean entradaValida(){
+        return !(datoJugador1.getText().isEmpty() ||datoJugador2.getText().isEmpty());
+    }
+    
+    private void inicializarDificultades(){
+        dificultades.addItem("FACIL");
+        dificultades.addItem("MEDIO");
+        dificultades.addItem("DIFICIL");
+    }
 }

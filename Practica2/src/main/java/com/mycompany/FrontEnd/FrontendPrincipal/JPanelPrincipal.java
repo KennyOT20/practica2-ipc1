@@ -109,11 +109,11 @@ public class JPanelPrincipal extends JPanel {
     private void colocarPanelBotones(){
         JPanel panelContenedorBotones = new JPanel(new GridBagLayout());
         
-        panelBotones.setBackground(Color.GREEN);
+        panelBotones.setBackground(Color.pink);
         panelBotones.setLayout(new BoxLayout(panelBotones, BoxLayout.Y_AXIS));
         panelBotones.add(Box.createRigidArea(new Dimension(0 , 20)));
         panelContenedorBotones.add(panelBotones);
-        panelContenedorBotones.setBackground(Color.GREEN);
+        panelContenedorBotones.setBackground(Color.PINK);
         this.add(panelContenedorBotones, BorderLayout.CENTER);
     }
     

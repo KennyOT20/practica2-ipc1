@@ -12,17 +12,40 @@ import com.mycompany.BackEnd.Jugador.Jugador;
  */
 public class ControladorDatos {
     
-    private Jugador jugador1;
-    private Jugador jugador2;
+    private ConstructorPartida controladorPartida;
+    private final Jugador jugador1;
+    private final Jugador jugador2;
+    private String dificultad;
     
     public ControladorDatos(){
         this.jugador1 = new Jugador();
         this.jugador2 = new Jugador();
     }
     
-    public void obtenerNombres(){
-        
+    public void construirPartida(){
+        this.controladorPartida = new ConstructorPartida(jugador1, jugador2, dificultad);
     }
+    
+    public Jugador getJugador1() {
+        return jugador1;
+    }
+
+    public Jugador getJugador2() {
+        return jugador2;
+    }
+
+    public void setDificultad(String dificultad) {
+        this.dificultad = dificultad;
+    }
+
+    public String getDificultad() {
+        return dificultad;
+    }
+
+    public ConstructorPartida getControladorPartida() {
+        return controladorPartida;
+    }
+    
     
     
     

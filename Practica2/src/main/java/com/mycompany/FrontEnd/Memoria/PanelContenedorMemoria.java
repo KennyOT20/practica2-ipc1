@@ -19,11 +19,11 @@ public final class PanelContenedorMemoria extends JPanel  implements NavegacionM
     private final CardLayout cardLayout;
     private final MenuMemoria menuMemoria;
     private final PanelDatos panelDatos;
-    private final VentanaJuegoMemoria interfazJuego;
+    private final VentanaJuego interfazJuego;
     
     private final String MENU_MEMORIA = "MENU MEMORIA";
     private final String PANEL_DATOS = "PANEL DATOS";
-    private final String INTERFAZ_DE_DATOS = "INTERFAZ DE DATOS";
+    private final String INTERFAZ_DE_JUEGO = "INTERFAZ DE DATOS";
     
     
     public PanelContenedorMemoria(VentanaPrincipal ventanaPrincipal){
@@ -31,7 +31,7 @@ public final class PanelContenedorMemoria extends JPanel  implements NavegacionM
         this.cardLayout = new CardLayout();
         this.menuMemoria = new MenuMemoria(this, ventanaPrincipal);
         this.panelDatos = new PanelDatos(this);
-        this.interfazJuego = new VentanaJuegoMemoria(this);
+        this.interfazJuego = new VentanaJuego(this);
         setLayout(cardLayout);
         agregarPaneles();
         irAMenuMemoria();
@@ -40,7 +40,7 @@ public final class PanelContenedorMemoria extends JPanel  implements NavegacionM
     private void agregarPaneles(){
         this.add(menuMemoria, MENU_MEMORIA);
         this.add(panelDatos, PANEL_DATOS);
-        this.add(interfazJuego, INTERFAZ_DE_DATOS);
+        this.add(interfazJuego, INTERFAZ_DE_JUEGO);
     }
 
     
@@ -57,13 +57,18 @@ public final class PanelContenedorMemoria extends JPanel  implements NavegacionM
 
     @Override
     public void iniciarJuego() {
-        cambiarPaneles(INTERFAZ_DE_DATOS);
+        cambiarPaneles(INTERFAZ_DE_JUEGO);
     }
 
     @Override
     public void cambiarPaneles(String nombrePanel) {
-        
         cardLayout.show(this, nombrePanel);
     }
+
+    public VentanaJuego getInterfazJuego() {
+        return interfazJuego;
+    }
+    
+    
     
 }

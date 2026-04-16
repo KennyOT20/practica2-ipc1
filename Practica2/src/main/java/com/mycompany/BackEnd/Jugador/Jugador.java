@@ -10,6 +10,7 @@ package com.mycompany.BackEnd.Jugador;
  */
 public class Jugador {
     
+    private String nombreJugador;
     private int puntosMemoria;
    
     public void iniciarEstadisticasMemoria(){
@@ -22,6 +23,14 @@ public class Jugador {
 
     public void setPuntosMemoria(int puntosMemoria) {
         this.puntosMemoria = puntosMemoria;
+    }
+
+    public String getNombreJugador() {
+        return nombreJugador;
+    }
+
+    public void setNombreJugador(String nombreJugador) {
+        this.nombreJugador = nombreJugador;
     }
     
     
