@@ -11,6 +11,7 @@ package com.mycompany.BackEnd.Memoria.Tablero;
  */
 public class Carta {
     
+    private String rutaDeImagenes;
     private boolean estaVolteada;
     private int codigoCarta;
     
@@ -33,6 +34,14 @@ public class Carta {
 
     public void setCodigoCarta(int codigoCarta) {
         this.codigoCarta = codigoCarta;
+    }
+
+    public String getRutaDeImages() {
+        return rutaDeImagenes;
+    }
+
+    public void setRutaDeImages(String rutaDeImages) {
+        this.rutaDeImagenes = rutaDeImages;
     }
     
     

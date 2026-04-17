@@ -13,14 +13,12 @@ import java.util.Random;
 public class Tablero {
     
     private final Carta[][] tablero;
-    private int cantidadFilas;
-    private int cantidadColumnas;
-    private int cantidadCartas;
+    private final int cantidadFilas;
+    private final int cantidadColumnas;
 
     public Tablero(int cantidadFilas, int cantidadColumnas){
         this.cantidadFilas = cantidadFilas;
         this.cantidadColumnas = cantidadColumnas;
-        this.cantidadCartas = cantidadFilas * cantidadColumnas;
         this.tablero = new Carta[cantidadFilas][cantidadColumnas];
 
         agregarCodigo();
@@ -76,8 +74,10 @@ public class Tablero {
     public int getCantidadColumnas() {
         return cantidadColumnas;
     }
-    
-    
-    
+
+    public Carta[][] getTablero() {
+        return tablero;
+    }
+
     
 }

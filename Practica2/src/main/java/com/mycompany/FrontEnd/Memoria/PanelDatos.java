@@ -21,7 +21,7 @@ import javax.swing.JTextField;
  */
 public class PanelDatos extends JPanel {
 
-    private ControladorDatos contradorDatos;
+    private ControladorDatos controladorDatos;
     private final PanelContenedorMemoria contenedor;
     
     private final JComboBox<String> dificultades;
@@ -152,7 +152,7 @@ public class PanelDatos extends JPanel {
         botonIniciar.addActionListener(e -> { 
                 if(entradaValida() == true){
                     enviarDatos();
-                    contenedor.getInterfazJuego().obtenerDatos(contradorDatos);
+                    contenedor.getInterfazJuego().obtenerDatos(controladorDatos);
                     contenedor.iniciarJuego();
                 } else {
                     manejarValidacio();
@@ -173,13 +173,13 @@ public class PanelDatos extends JPanel {
         String jugado2 = datoJugador2.getText();
         String nivel = (String) dificultades.getSelectedItem();
         
-        contradorDatos = new ControladorDatos();
+        controladorDatos = new ControladorDatos();
         
-        contradorDatos.getJugador1().setNombreJugador(jugador1);
-        contradorDatos.getJugador2().setNombreJugador(jugado2);
-        contradorDatos.setDificultad(nivel);
+        controladorDatos.getJugador1().setNombreJugador(jugador1);
+        controladorDatos.getJugador2().setNombreJugador(jugado2);
+        controladorDatos.setDificultad(nivel);
         
-        contradorDatos.construirPartida();
+        controladorDatos.construirPartida();
     }
     
     private boolean entradaValida(){

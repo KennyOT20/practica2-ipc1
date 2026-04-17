@@ -9,7 +9,8 @@ package com.mycompany.BackEnd.Jugador;
  * @author Kenny
  */
 public class Jugador {
-    
+   
+    private boolean turno;
     private String nombreJugador;
     private int puntosMemoria;
    
@@ -31,6 +32,14 @@ public class Jugador {
 
     public void setNombreJugador(String nombreJugador) {
         this.nombreJugador = nombreJugador;
+    }
+
+    public boolean isTurno() {
+        return turno;
+    }
+
+    public void setTurno(boolean turno) {
+        this.turno = turno;
     }
     
     
