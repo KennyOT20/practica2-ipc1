@@ -4,6 +4,7 @@
  */
 package com.mycompany.FrontEnd.FrontendPrincipal;
 
+import com.mycompany.FrontEnd.Hunting.JPanelContenedorHunting;
 import com.mycompany.FrontEnd.Memoria.PanelContenedorMemoria;
 import com.mycompany.FrontEnd.ModulosDeNavegacion.NavegacionPrincipal;
 import java.awt.CardLayout;
@@ -19,6 +20,7 @@ public final class VentanaPrincipal extends JFrame implements NavegacionPrincipa
     private final JPanel contenedor;
     private final JPanelPrincipal menuInicial;
     private final PanelContenedorMemoria memoria;
+    private final JPanelContenedorHunting hunting;
     public final String MENU_INICIAL = "MENU INICIAL";
     public final String MEMORIA = "MEMORIA";   
     public final String HUNTING = "HUNTING";
@@ -29,6 +31,7 @@ public final class VentanaPrincipal extends JFrame implements NavegacionPrincipa
        this.cardLayout = new CardLayout();
        this.contenedor = new JPanel(cardLayout);
        this.memoria = new PanelContenedorMemoria(this);
+       this.hunting = new JPanelContenedorHunting(this);
        this.menuInicial = new JPanelPrincipal(this);
        iniciarComponentes();
        agregarPanelesPrincipales();
@@ -50,6 +53,7 @@ public final class VentanaPrincipal extends JFrame implements NavegacionPrincipa
     private void agregarPanelesPrincipales(){
         contenedor.add(menuInicial, MENU_INICIAL);
         contenedor.add(memoria, MEMORIA);
+        contenedor.add(hunting, HUNTING);
        // contenedor.add();
     }
     
@@ -70,6 +74,7 @@ public final class VentanaPrincipal extends JFrame implements NavegacionPrincipa
 
     @Override
     public void irAHunting() {
+        mostrarPaneles(HUNTING);
     }
 
     @Override

@@ -30,8 +30,6 @@ public class JPanelPrincipal extends JPanel {
     private final JButton botonReportes;
     private final JButton botonSalir;
     
-    
-    
     public JPanelPrincipal(VentanaPrincipal ventanaPrincipal){
         this.panelBotones = new JPanel();
         this.labelTitulo = new JLabel();
@@ -134,7 +132,10 @@ public class JPanelPrincipal extends JPanel {
     }
     
     private void accionHunting(){
-        
+        botonHunting.addActionListener(e -> {
+                ventanaPrincipal.irAHunting();
+                ventanaPrincipal.setTitle("Hunting");
+        } );
     }
     
     private void accionReportes(){
