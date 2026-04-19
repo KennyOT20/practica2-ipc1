@@ -15,12 +15,14 @@ public class Tablero {
     private final Carta[][] tablero;
     private final int cantidadFilas;
     private final int cantidadColumnas;
+    private int cantidadPares;
 
     public Tablero(int cantidadFilas, int cantidadColumnas){
         this.cantidadFilas = cantidadFilas;
         this.cantidadColumnas = cantidadColumnas;
         this.tablero = new Carta[cantidadFilas][cantidadColumnas];
-
+        this.cantidadPares = 0;
+        
         agregarCodigo();
         mezclarCartas();
     }
@@ -50,6 +52,9 @@ public class Tablero {
         
     }
 
+    /**
+     * Metodo encargado para mezclar las cartas mediante su codigo unico de cada carta
+     */
     private void mezclarCartas(){
         Random random = new Random();
         
@@ -65,7 +70,7 @@ public class Tablero {
         }
         
     }
-    
+
 
     public int getCantidadFilas() {
         return cantidadFilas;
@@ -79,5 +84,14 @@ public class Tablero {
         return tablero;
     }
 
+    public int getCantidadPares() {
+        return cantidadPares;
+    }
+
+    public void setCantidadPares(int cantidadPares) {
+        this.cantidadPares = cantidadPares;
+    }
+
+    
     
 }

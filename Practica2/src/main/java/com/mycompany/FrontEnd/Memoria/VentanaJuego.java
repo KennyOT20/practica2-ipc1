@@ -21,7 +21,12 @@ import javax.swing.JPanel;
 public class VentanaJuego extends JPanel {
     
     private ControladorDatos controladorDatos;
+    private final PanelContenedorMemoria memoria;
     private TableroMemoria tablero;
+    private String nombreJugador1;
+    private String nombreJugador2;
+    private int punteoJugador1;
+    private int punteoJugador2;
     private final JButton botonSalir;
     private final JPanel panelSuperior;
     private final JPanel panelContenedorTablero;
@@ -30,6 +35,7 @@ public class VentanaJuego extends JPanel {
     private final JLabel turnos;
     
     public VentanaJuego(PanelContenedorMemoria memoria){
+        this.memoria = memoria;
         this.panelSuperior = new JPanel();
         this.panelContenedorTablero = new JPanel();
         this.botonSalir = new JButton();
@@ -43,11 +49,12 @@ public class VentanaJuego extends JPanel {
         this.controladorDatos = datos;
         agregarTablero();
         configurarLabels();
+        actualizarLabels();
         obtenerTurnos();
     }
   
    public void agregarTablero(){
-        this.tablero = new TableroMemoria(controladorDatos);
+        this.tablero = new TableroMemoria(controladorDatos,this);
 
         panelContenedorTablero.removeAll(); 
         panelContenedorTablero.add(tablero, BorderLayout.CENTER);
@@ -98,14 +105,12 @@ public class VentanaJuego extends JPanel {
     }
     
     private void configurarLabels(){
-        String nombreJugador1 = controladorDatos.getJugador1().getNombreJugador();
-        String nombreJugador2 = controladorDatos.getJugador2().getNombreJugador();
+        nombreJugador1 = controladorDatos.getJugador1().getNombreJugador();
+        nombreJugador2 = controladorDatos.getJugador2().getNombreJugador();
 
-        int punteoJugador1 = controladorDatos.getJugador1().getPuntosMemoria();
-        int punteoJugador2 = controladorDatos.getJugador2().getPuntosMemoria();
+         punteoJugador1 = controladorDatos.getJugador1().getPuntosMemoria();
+         punteoJugador2 = controladorDatos.getJugador2().getPuntosMemoria();
 
-        labelPunteoJug1.setText("Puntos de " + nombreJugador1 + " : " + punteoJugador1);
-        labelPunteoJug2.setText("Puntos de " + nombreJugador2 + " : " + punteoJugador2);
         
         labelPunteoJug1.setHorizontalAlignment(JLabel.CENTER);
         labelPunteoJug2.setHorizontalAlignment(JLabel.CENTER);
@@ -120,18 +125,35 @@ public class VentanaJuego extends JPanel {
         turnos.setForeground(Color.YELLOW);
     }
     
-    private void obtenerTurnos(){
+    public void obtenerTurnos(){
         turnos.setFont(new Font("Arial", Font.BOLD, 35));
         
         String jugadorEnTurno = " ";
         
-        if(controladorDatos.getJugador1().isTurno() == true){
+        if(controladorDatos.getControladorPartida().getPartida().isTurnos()== true){
             jugadorEnTurno = controladorDatos.getJugador1().getNombreJugador();
-        } else if(controladorDatos.getJugador2().isTurno() == false){
+        } else if(controladorDatos.getControladorPartida().getPartida().isTurnos()== false){
             jugadorEnTurno = controladorDatos.getJugador2().getNombreJugador();
         }
          turnos.setText("Turno de: " + jugadorEnTurno);
 
     }
+    
+    public void actualizarLabels(){
+         nombreJugador1 = controladorDatos.getJugador1().getNombreJugador();
+         nombreJugador2 = controladorDatos.getJugador2().getNombreJugador();
+
+         punteoJugador1 = controladorDatos.getJugador1().getPuntosMemoria();
+         punteoJugador2 = controladorDatos.getJugador2().getPuntosMemoria();
+         labelPunteoJug1.setText("Puntos de " + nombreJugador1 + " : " + punteoJugador1);
+         labelPunteoJug2.setText("Puntos de " + nombreJugador2 + " : " + punteoJugador2);
+    }
+
+    public PanelContenedorMemoria getMemoria() {
+        return memoria;
+    }
+    
+    
+    
     
 }

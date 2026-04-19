@@ -4,7 +4,7 @@
  */
 package com.mycompany.BackEnd.Memoria.Controladores;
 
-import com.mycompany.BackEnd.Jugador.Jugador;
+import com.mycompany.BackEnd.Memoria.Jugador.Jugador;
 
 /**
  *
@@ -46,8 +46,5 @@ public class ControladorDatos {
         return controladorPartida;
     }
     
-    
-    
-    
-    
+
 }

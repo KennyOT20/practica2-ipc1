@@ -81,6 +81,13 @@ public class PanelDatos extends JPanel {
         setLayout(null);
         setBackground(Color.GRAY);
     }
+    
+    private void reiniciarDatos(){
+        datoJugador1.setText("");
+        datoJugador2.setText("");
+        dificultades.setSelectedIndex(0);
+        
+    }
 
     private void configurarPaneles() {
 
@@ -152,6 +159,7 @@ public class PanelDatos extends JPanel {
         botonIniciar.addActionListener(e -> { 
                 if(entradaValida() == true){
                     enviarDatos();
+                    reiniciarDatos();
                     contenedor.getInterfazJuego().obtenerDatos(controladorDatos);
                     contenedor.iniciarJuego();
                 } else {
@@ -161,7 +169,9 @@ public class PanelDatos extends JPanel {
     }
 
     private void botonSalir(){
-        botonRegresar.addActionListener(e -> {contenedor.irAMenuMemoria();});
+        botonRegresar.addActionListener(e -> {
+            reiniciarDatos();
+            contenedor.irAMenuMemoria();});
     }
     
     private void manejarValidacio(){
