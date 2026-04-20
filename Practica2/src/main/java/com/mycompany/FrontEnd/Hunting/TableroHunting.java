@@ -138,8 +138,9 @@ public class TableroHunting extends JPanel implements AvisarPartida{
                 "Fin del juego",
                 JOptionPane.INFORMATION_MESSAGE
             );
-
-            panelJuego.getPanelContenedor().regresarAMenu();
+            
+            panelJuego.reiniciarLabelInfo();
+            panelJuego.getPanelContenedor().irAMenuInicial();
         }
     }
     

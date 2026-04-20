@@ -201,4 +201,11 @@ public class PanelDatos extends JPanel {
         dificultades.addItem("MEDIO");
         dificultades.addItem("DIFICIL");
     }
+
+    public ControladorDatos getControladorDatos() {
+        return controladorDatos;
+    }
+    
+    
+    
 }

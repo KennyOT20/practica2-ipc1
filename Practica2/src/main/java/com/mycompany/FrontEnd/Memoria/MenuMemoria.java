@@ -14,8 +14,10 @@ import java.awt.GridBagLayout;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -50,6 +52,9 @@ public class MenuMemoria extends JPanel {
         colocarBotones();
         
         botonInicio();
+        botonAyuda();
+        botonAcercaDe();
+        botonReportes();
         botonSalir();
     }
     
@@ -131,6 +136,13 @@ public class MenuMemoria extends JPanel {
          
      }
      
+     private void botonReportes(){
+          botonReportes.addActionListener(e ->{
+             ventanaPrincipal.setTitle("Reportes");
+             panelContenedor.irAReportes();
+         });
+     }
+     
      private void botonInicio(){
          botonJuego.addActionListener(e ->{
              ventanaPrincipal.setTitle("Datos de Memoria");
@@ -144,5 +156,60 @@ public class MenuMemoria extends JPanel {
            ventanaPrincipal.mostrarPaneles("MENU INICIAL");
             });
      }
+     
+     private void botonAyuda(){
+         botonAyuda.addActionListener(e ->{
+             mostrarGuia();
+         });
+     }
+     
+     private void botonAcercaDe(){
+         botonAcercaDe.addActionListener(e ->{
+             mostrarDescripcionDesarrollador();
+         });
+     }
+     private void mostrarGuia() {
+        JDialog guiaDialog = new JDialog();
+        guiaDialog.setTitle("Guia del juego");
+        
+        JTextArea guiaText = new JTextArea("""
+                                                  1. Encuentra un par igual de cartas
+                                                  y obtiene 50 puntos, si fallas perderas 5 puntos.
+                                                  2. El turno en pantalla indica quien debe 
+                                                  voltear las cartas.
+                                                  3. Podras ver los punteos en tiempo real al
+                                                  lado del turno.
+                                                  4. El que consiga mas puntos al final gana
+                                                  la partida.
+                                                  5. El juego es exclusivamente 1vs1.
+                                                  6. Al finalizar puedes iniciar otra 
+                                                  partida en Juego - IniciarJuego.
+                                                  """);
+        guiaText.setEditable(false); 
+        guiaDialog.add(guiaText);
+        
+        guiaDialog.setSize(300, 300);
+        guiaDialog.setLocationRelativeTo(this);
+        guiaDialog.setVisible(true);
+    }
+    
+    private void mostrarDescripcionDesarrollador() {
+        JDialog descripcionDialog = new JDialog();
+        descripcionDialog.setTitle("Desarrollador");
+        
+        JTextArea descripcionText = new JTextArea("""
+                                                  Juego desarrollado por Kenny Oxlaj
+                                                  Con carnet 202331308
+                                                  Estudiante de Ingenieria en Ciencias y Sistemas
+                                                  en el Centro Universitario de Occidente
+                                                  Para la practica 2 del curso IPC1 PS 2026
+                                                  """);
+        descripcionText.setEditable(false); 
+        descripcionDialog.add(descripcionText);
+        
+        descripcionDialog.setLocationRelativeTo(this);
+        descripcionDialog.setSize(400, 200);
+        descripcionDialog.setVisible(true);
+    }
     
 }

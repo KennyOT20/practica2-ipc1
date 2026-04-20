@@ -5,6 +5,7 @@
 package com.mycompany.BackEnd.Memoria.Partida;
 
 import com.mycompany.BackEnd.Memoria.Jugador.Jugador;
+import com.mycompany.BackEnd.Memoria.Reportes.ReportesMemoria;
 import com.mycompany.BackEnd.Memoria.Tablero.Carta;
 import com.mycompany.BackEnd.Memoria.Tablero.Tablero;
 import java.util.Random;
@@ -104,6 +105,20 @@ public class PartidaMemoria {
             cambiarTurno();
         }
                 
+    }
+    
+    public void mandarReportes(){
+        ReportesMemoria reportes = new ReportesMemoria();
+        
+        if(jugador1.getPuntosMemoria() > jugador2.getPuntosMemoria()){
+            reportes.obtenerGanador(jugador1);
+            reportes.obtenerPerdedor(jugador2);
+        } else {
+            reportes.obtenerGanador(jugador2);
+            reportes.obtenerPerdedor(jugador1);
+        }
+        
+        reportes.guardarPartida();
     }
     
     private void darPunteo(){

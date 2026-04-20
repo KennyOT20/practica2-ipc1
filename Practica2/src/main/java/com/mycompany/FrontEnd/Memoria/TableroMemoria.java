@@ -197,7 +197,9 @@ public class TableroMemoria extends JPanel implements Runnable{
 
         boolean partidaFinalizada = controladorDatos.getControladorPartida().getPartida().obtenerEstadoPartida();
 
-        if (!partidaFinalizada) return;
+        if (!partidaFinalizada) {
+            return;
+        }
 
         Jugador ganador = controladorDatos.getControladorPartida().getPartida().obtenerGanador();
 
@@ -206,6 +208,9 @@ public class TableroMemoria extends JPanel implements Runnable{
                 JOptionPane.INFORMATION_MESSAGE
             );
         }
+        
+        controladorDatos.getControladorPartida().getPartida().mandarReportes();
+        
 
         ventana.getMemoria().recibirDatos();
         

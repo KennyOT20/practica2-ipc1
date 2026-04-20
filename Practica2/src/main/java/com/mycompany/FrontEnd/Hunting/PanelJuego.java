@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -140,6 +141,10 @@ public class PanelJuego extends JPanel {
         panelSuperior.repaint();
     }
     
+    public void reiniciarLabelInfo(){
+        info2.setText("");
+    }
+    
     private void inicializarPanelInfo(){
 
         labelInfo = new JLabel("Turnos acertados consecutivos");
@@ -160,7 +165,13 @@ public class PanelJuego extends JPanel {
     private void accionSalir(){
         botonSalir.addActionListener(e ->{
             datosHunting.getPartida().detener();
-            
+            JOptionPane.showMessageDialog(
+                this, 
+                "Partida cancelada, volviendo al menu",
+                "Fin del juego",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+            reiniciarLabelInfo();
             panelContenedor.irAMenuInicial();
         });
         

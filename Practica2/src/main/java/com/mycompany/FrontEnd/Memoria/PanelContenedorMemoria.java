@@ -20,10 +20,12 @@ public final class PanelContenedorMemoria extends JPanel  implements NavegacionM
     private final MenuMemoria menuMemoria;
     private final PanelDatos panelDatos;
     private final VentanaJuego interfazJuego;
+    private final PanelReportes panelReportes;
     
     private final String MENU_MEMORIA = "MENU MEMORIA";
     private final String PANEL_DATOS = "PANEL DATOS";
     private final String INTERFAZ_DE_JUEGO = "INTERFAZ DE DATOS";
+    private final String PANEL_REPORTES = "REPORTES";
     
     
     public PanelContenedorMemoria(VentanaPrincipal ventanaPrincipal){
@@ -32,6 +34,7 @@ public final class PanelContenedorMemoria extends JPanel  implements NavegacionM
         this.menuMemoria = new MenuMemoria(this, ventanaPrincipal);
         this.panelDatos = new PanelDatos(this);
         this.interfazJuego = new VentanaJuego(this);
+        this.panelReportes = new PanelReportes(panelDatos, this);
         setLayout(cardLayout);
         agregarPaneles();
         irAMenuMemoria();
@@ -41,6 +44,7 @@ public final class PanelContenedorMemoria extends JPanel  implements NavegacionM
         this.add(menuMemoria, MENU_MEMORIA);
         this.add(panelDatos, PANEL_DATOS);
         this.add(interfazJuego, INTERFAZ_DE_JUEGO);
+        this.add(panelReportes, PANEL_REPORTES);
     }
 
     
@@ -48,6 +52,10 @@ public final class PanelContenedorMemoria extends JPanel  implements NavegacionM
     @Override
     public void irAMenuMemoria() {
         cambiarPaneles(MENU_MEMORIA);
+    }
+    
+    public void irAReportes(){
+        cambiarPaneles(PANEL_REPORTES);
     }
 
     @Override
