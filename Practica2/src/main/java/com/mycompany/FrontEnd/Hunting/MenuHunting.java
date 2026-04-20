@@ -4,6 +4,7 @@
  */
 package com.mycompany.FrontEnd.Hunting;
 
+import com.mycompany.FrontEnd.FrontendPrincipal.VentanaPrincipal;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -22,13 +23,17 @@ import javax.swing.JPanel;
  */
 public class MenuHunting extends JPanel {
 
+    private final JPanelContenedorHunting panelContenedor;
+    private final VentanaPrincipal ventanaPrincipal;
     private final JButton botonInicio;
     private final JButton botonRegresar;
     private final JButton botonReportes;
     private final JLabel labelTitulo;
     private final JPanel panelBotones;
 
-    public MenuHunting(){
+    public MenuHunting(JPanelContenedorHunting panelContenedor, VentanaPrincipal ventanaPrincipal){
+        this.ventanaPrincipal = ventanaPrincipal;
+        this.panelContenedor = panelContenedor;
         this.botonInicio = new JButton();
         this.botonRegresar = new JButton();
         this.botonReportes = new JButton();
@@ -38,6 +43,9 @@ public class MenuHunting extends JPanel {
         iniciarPanel();
         colocarBotones();
         ajustarBotones();
+        accionInicio();
+        accionRegresar();
+        accionReportes();
     }
 
     private void iniciarPanel(){
@@ -45,6 +53,7 @@ public class MenuHunting extends JPanel {
 
         labelTitulo.setText("HUNTING");
         labelTitulo.setFont(new Font("Arial", Font.BOLD, 60));
+        labelTitulo.setForeground(Color.red);
         labelTitulo.setHorizontalAlignment(JLabel.CENTER);
 
         this.add(labelTitulo, BorderLayout.NORTH);
@@ -109,4 +118,30 @@ public class MenuHunting extends JPanel {
 
         this.add(contenedor, BorderLayout.CENTER);
     }
+    
+    private void accionInicio(){
+        botonInicio.addActionListener(e -> {
+            panelContenedor.irADatos();
+        });
+    }
+    
+    private void accionRegresar(){
+        botonRegresar.addActionListener(e -> {
+            ventanaPrincipal.irAMenuInicial();
+    });
+    }
+    
+    private void accionReportes(){
+        
+    }
+
+    public JPanelContenedorHunting getPanelContenedor() {
+        return panelContenedor;
+    }
+
+    public VentanaPrincipal getVentanaPrincipal() {
+        return ventanaPrincipal;
+    }
+    
+    
 }

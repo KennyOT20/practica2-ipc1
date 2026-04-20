@@ -18,11 +18,13 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
     private final VentanaPrincipal ventanaPrincipal;
     private final MenuHunting menuHunting;
     private final PanelDatosHunting datosHunting;
-    private final PanelJuego panelJuego;
+    private PanelJuego panelJuego;
     
     private final CardLayout cardLayout;
     
+    private final String INICIO = "INICIO";
     private final String MENU = "MENU INCIAL";
+    private final String MENU_HUNTING = "MENU HUNTING";
     private final String DATOS = "DATOS";
     private final String REPORTES = "REPORTES";
     private final String REGRESAR = "REGRESAR";
@@ -30,9 +32,9 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
     
     public JPanelContenedorHunting(VentanaPrincipal ventanaPrincipal){
         this.ventanaPrincipal = ventanaPrincipal;
-        this.menuHunting = new MenuHunting();
-        this.datosHunting = new PanelDatosHunting();
-        this.panelJuego = new PanelJuego();
+        this.menuHunting = new MenuHunting(this, ventanaPrincipal);
+        this.datosHunting = new PanelDatosHunting(menuHunting, this);
+        this.panelJuego = new PanelJuego(this);
         this.cardLayout = new CardLayout();
         
         setLayout(cardLayout);
@@ -41,9 +43,9 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
     }
     
     private void iniciarComponentes(){
-        this.add(menuHunting, MENU);
+        this.add(menuHunting, MENU_HUNTING);
         this.add(datosHunting, DATOS);
-        this.add(panelJuego);
+        this.add(panelJuego, INICIO);
     }
 
     @Override
@@ -53,6 +55,7 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
 
     @Override
     public void irADatos() {
+        cambiarPaneles(DATOS);
     }
 
     @Override
@@ -61,11 +64,28 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
 
     @Override
     public void regresarAMenu() {
+        ventanaPrincipal.irAMenuInicial();
     }
 
     @Override
     public void irAMenuInicial() {
-        cambiarPaneles(MENU);
+        cambiarPaneles(MENU_HUNTING);
     }
+    
+    @Override
+    public void iniciarJuego() {
+        cambiarPaneles(INICIO);
+    }
+
+    public PanelJuego getPanelJuego() {
+        return panelJuego;
+    }
+
+    public void setPanelJuego(PanelJuego panelJuego) {
+        this.panelJuego = panelJuego;
+    }
+    
+    
+    
     
 }

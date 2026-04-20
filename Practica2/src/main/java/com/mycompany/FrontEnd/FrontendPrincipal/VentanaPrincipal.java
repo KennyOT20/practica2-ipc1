@@ -21,10 +21,10 @@ public final class VentanaPrincipal extends JFrame implements NavegacionPrincipa
     private final JPanelPrincipal menuInicial;
     private final PanelContenedorMemoria memoria;
     private final JPanelContenedorHunting hunting;
-    public final String MENU_INICIAL = "MENU INICIAL";
-    public final String MEMORIA = "MEMORIA";   
-    public final String HUNTING = "HUNTING";
-    public final String REPORTES = "REPORTES";
+    private final String MENU_INICIAL = "MENU INICIAL";
+    private final String MEMORIA = "MEMORIA";   
+    private final String HUNTING = "HUNTING";
+    private final String REPORTES = "REPORTES";
     
     
     public VentanaPrincipal(){

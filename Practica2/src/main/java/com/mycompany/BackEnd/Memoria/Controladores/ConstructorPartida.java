@@ -5,7 +5,7 @@
 package com.mycompany.BackEnd.Memoria.Controladores;
 
 import com.mycompany.BackEnd.Memoria.Jugador.Jugador;
-import com.mycompany.BackEnd.Memoria.Partida.Partida;
+import com.mycompany.BackEnd.Memoria.Partida.PartidaMemoria;
 import com.mycompany.BackEnd.Memoria.Tablero.Tablero;
 
 /**
@@ -20,7 +20,7 @@ public class ConstructorPartida {
     private int cantidadFilas;
     private int cantidadColumnas;
     private String dificultad;
-    private Partida partida;
+    private PartidaMemoria partida;
     
     public ConstructorPartida(Jugador jugador1, Jugador jugador2, String dificultad){
         this.jugador1 = jugador1;
@@ -28,7 +28,7 @@ public class ConstructorPartida {
         this.dificultad = dificultad.toUpperCase();
         obtenerTamañoTablero();
         this.tablero = new Tablero(cantidadFilas, cantidadColumnas);
-        this.partida = new Partida(jugador1, jugador2, tablero);
+        this.partida = new PartidaMemoria(jugador1, jugador2, tablero);
     }
  
     private void obtenerTamañoTablero(){
@@ -57,7 +57,7 @@ public class ConstructorPartida {
         return tablero;
     }
 
-    public Partida getPartida() {
+    public PartidaMemoria getPartida() {
         return partida;
     }
 

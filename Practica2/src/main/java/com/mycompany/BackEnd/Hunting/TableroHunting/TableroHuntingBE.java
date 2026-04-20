@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author Kenny
  */
-public class TableroHunting {
+public class TableroHuntingBE {
     
     private final Casilla[][] tablero;
     private int coordenadaX;
@@ -18,9 +18,9 @@ public class TableroHunting {
     private final int filas;
     private final int columnas;
 
-    public TableroHunting() {
-        this.filas = 30;
-        this.columnas = 30;
+    public TableroHuntingBE() {
+        this.filas = 10;
+        this.columnas = 10;
         this.tablero = new Casilla[filas][columnas];
         
         llenarArreglo();
@@ -44,9 +44,33 @@ public class TableroHunting {
     }
     
     public void quitarPato(){
-        tablero[coordenadaX][coordenadaY].desactivarPato();
-        tablero[coordenadaX][coordenadaY] = null;
+        if(tablero[coordenadaX][coordenadaY].isContienePato()){
+             tablero[coordenadaX][coordenadaY].desactivarPato();
     }
+        
+    }
+    
+    public boolean acertar(int x, int y){
+        if(tablero[x][y].isContienePato()){
+            tablero[x][y].desactivarPato();
+            return true; 
+        }
+        return false; 
+    }
+
+    public int getFilas() {
+        return filas;
+    }
+
+    public int getColumnas() {
+        return columnas;
+    }
+
+    public Casilla[][] getTablero() {
+        return tablero;
+    }
+    
+    
     
     
 }

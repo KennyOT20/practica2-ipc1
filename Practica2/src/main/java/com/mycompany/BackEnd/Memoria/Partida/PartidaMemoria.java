@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @author Kenny
  */
-public class Partida {
+public class PartidaMemoria {
     
     private boolean turnos;
     private Random random;
@@ -26,7 +26,7 @@ public class Partida {
     private  Jugador jugador2;
     private final Tablero tablero;
     
-    public Partida(Jugador jugador1, Jugador jugador2, Tablero tablero){
+    public PartidaMemoria(Jugador jugador1, Jugador jugador2, Tablero tablero){
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.tablero = tablero;

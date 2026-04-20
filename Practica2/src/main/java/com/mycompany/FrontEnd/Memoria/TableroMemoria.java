@@ -208,6 +208,8 @@ public class TableroMemoria extends JPanel implements Runnable{
         }
 
         ventana.getMemoria().recibirDatos();
+        
+        
     }
     
     
