@@ -1,0 +1,2 @@
+Gato , Tiempo inicial: 400 ms, Tiempo reducido: 400ms , 14 , 17 , 2026-04-20 , 10:46
+Kenny , Tiempo inicial: 1 ms, Tiempo reducido: 1000ms , 5 , 5 , 2026-04-20 , 10:48

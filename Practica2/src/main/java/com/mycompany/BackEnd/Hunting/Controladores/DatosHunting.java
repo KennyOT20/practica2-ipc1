@@ -23,7 +23,7 @@ public class DatosHunting {
     }
     
     public void iniciarPartida(){
-        this.partida = new Partida( jugador, cantidadAciertos, tiempoInicial, tiempoReducido);
+        this.partida = new Partida( this, jugador, cantidadAciertos, tiempoInicial, tiempoReducido);
     }
     
     public int getCantidadAciertos() {

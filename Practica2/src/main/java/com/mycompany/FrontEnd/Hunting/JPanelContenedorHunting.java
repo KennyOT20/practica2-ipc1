@@ -19,6 +19,7 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
     private final MenuHunting menuHunting;
     private final PanelDatosHunting datosHunting;
     private PanelJuego panelJuego;
+    private PanelReportesHunting reportes;
     
     private final CardLayout cardLayout;
     
@@ -34,6 +35,7 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
         this.ventanaPrincipal = ventanaPrincipal;
         this.menuHunting = new MenuHunting(this, ventanaPrincipal);
         this.datosHunting = new PanelDatosHunting(menuHunting, this);
+        this.reportes = new PanelReportesHunting(this);
         this.panelJuego = new PanelJuego(this);
         this.cardLayout = new CardLayout();
         
@@ -46,6 +48,7 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
         this.add(menuHunting, MENU_HUNTING);
         this.add(datosHunting, DATOS);
         this.add(panelJuego, INICIO);
+        this.add(reportes, REPORTES);
     }
 
     @Override
@@ -60,6 +63,7 @@ public class JPanelContenedorHunting extends JPanel implements NavegacionHunting
 
     @Override
     public void irAReportes() {
+        cambiarPaneles(REPORTES);
     }
 
     @Override

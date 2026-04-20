@@ -79,6 +79,7 @@ public final class VentanaPrincipal extends JFrame implements NavegacionPrincipa
 
     @Override
     public void irAReportes() {
+     //   mostrarPaneles(REPORTES);
     }
 
 }

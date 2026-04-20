@@ -132,7 +132,9 @@ public class MenuHunting extends JPanel {
     }
     
     private void accionReportes(){
-        
+        botonReportes.addActionListener(e -> {
+            panelContenedor.irAReportes();
+    });
     }
 
     public JPanelContenedorHunting getPanelContenedor() {

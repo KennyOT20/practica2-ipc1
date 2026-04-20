@@ -20,6 +20,27 @@ public class ReportesMemoria {
     private String fecha;
     private String hora;
 
+    public ReportesMemoria(){
+        inicializarArchivo();
+    }
+    
+    private void inicializarArchivo() {
+        try {
+            File carpeta = new File("Reportes");
+            File archivo = new File(PATH);
+
+            if (!carpeta.exists()) {
+                carpeta.mkdirs();
+            }
+
+            if (!archivo.exists()) {
+                archivo.createNewFile(); 
+                System.out.println("Archivo creado  en: " + PATH);
+            }
+        } catch (IOException e) {
+            System.err.println("No se pudo crear el archivo de reportes: " + e.getMessage());
+        }
+    }
     public void obtenerGanador(Jugador jugadorGanador) {
         this.jugadorGanador = jugadorGanador;
     }

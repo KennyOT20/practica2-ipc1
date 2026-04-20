@@ -27,7 +27,7 @@ public class JPanelPrincipal extends JPanel {
     private final JLabel labelTitulo;
     private final JButton botonMemoria;
     private final JButton botonHunting;
-    private final JButton botonReportes;
+
     private final JButton botonSalir;
     
     public JPanelPrincipal(VentanaPrincipal ventanaPrincipal){
@@ -35,7 +35,6 @@ public class JPanelPrincipal extends JPanel {
         this.labelTitulo = new JLabel();
         this.botonMemoria = new JButton();
         this.botonHunting = new JButton();
-        this.botonReportes = new JButton();
         this.botonSalir = new JButton();
         this.ventanaPrincipal = ventanaPrincipal;
         
@@ -46,7 +45,6 @@ public class JPanelPrincipal extends JPanel {
         
         accionMemoria();
         accionHunting();
-        accionReportes();
         accionSalir();
     }
     
@@ -74,7 +72,6 @@ public class JPanelPrincipal extends JPanel {
         panelBotones.add(botonHunting);
         panelBotones.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        panelBotones.add(botonReportes);
         panelBotones.add(Box.createRigidArea(new Dimension(0, 20)));
 
         panelBotones.add(botonSalir);
@@ -83,24 +80,20 @@ public class JPanelPrincipal extends JPanel {
     private void editarTextoBotones(){
         botonMemoria.setText("MEMORIAS");
         botonHunting.setText("HUNTING");
-        botonReportes.setText("REPORTES");
         botonSalir.setText("SALIR");
     }
     
     private void editarComponenteBotones(){
         botonMemoria.setFont(new Font("Arial", Font.BOLD, 30));
         botonHunting.setFont(new Font("Arial", Font.BOLD, 30));
-        botonReportes.setFont(new Font("Arial", Font.BOLD, 30));
         botonSalir.setFont(new Font("Arial", Font.BOLD, 30));
         
         botonMemoria.setAlignmentX(Component.CENTER_ALIGNMENT);
         botonHunting.setAlignmentX(Component.CENTER_ALIGNMENT);
-        botonReportes.setAlignmentX(Component.CENTER_ALIGNMENT);
         botonSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         botonMemoria.setMaximumSize(new Dimension(300, 60));
         botonHunting.setMaximumSize(new Dimension(300, 60));
-        botonReportes.setMaximumSize(new Dimension(300, 60));
         botonSalir.setMaximumSize(new Dimension(300, 60));
     }
     
@@ -117,7 +110,6 @@ public class JPanelPrincipal extends JPanel {
     
     private void editarColoresBotones(){
         botonHunting.setBackground(Color.YELLOW);
-        botonReportes.setBackground(Color.white);
         botonMemoria.setBackground(Color.GRAY);
         botonSalir.setBackground(Color.red);
     }
@@ -138,10 +130,7 @@ public class JPanelPrincipal extends JPanel {
         } );
     }
     
-    private void accionReportes(){
-        
-    }
-    
+
     private void accionSalir(){
         botonSalir.addActionListener(e -> System.exit(0));
     }

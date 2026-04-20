@@ -43,6 +43,7 @@ public class VentanaJuego extends JPanel {
         this.labelPunteoJug2 = new JLabel();
         this.turnos = new JLabel();
         iniciarComponentes();
+        accionSalir();
     }
     
    public void obtenerDatos(ControladorDatos datos){
@@ -147,6 +148,12 @@ public class VentanaJuego extends JPanel {
          punteoJugador2 = controladorDatos.getJugador2().getPuntosMemoria();
          labelPunteoJug1.setText("Puntos de " + nombreJugador1 + " : " + punteoJugador1);
          labelPunteoJug2.setText("Puntos de " + nombreJugador2 + " : " + punteoJugador2);
+    }
+    
+    private void accionSalir(){
+        botonSalir.addActionListener(e->{
+            memoria.irAMenuMemoria();
+        });
     }
 
     public PanelContenedorMemoria getMemoria() {

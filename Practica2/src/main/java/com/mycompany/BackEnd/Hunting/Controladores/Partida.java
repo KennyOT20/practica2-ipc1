@@ -5,6 +5,7 @@
 package com.mycompany.BackEnd.Hunting.Controladores;
 
 import com.mycompany.BackEnd.Hunting.JugadorHunting.JugadorHunting;
+import com.mycompany.BackEnd.Hunting.Reportes.ReportesHunting;
 import com.mycompany.BackEnd.Hunting.TableroHunting.TableroHuntingBE;
 import com.mycompany.FrontEnd.ModulosDeNavegacion.AvisarPartida;
 
@@ -17,6 +18,7 @@ import com.mycompany.FrontEnd.ModulosDeNavegacion.AvisarPartida;
 public class Partida implements Runnable {
     
     private  TableroHuntingBE tablero;
+    private final DatosHunting datos;
     private AvisarPartida avisar;
     private boolean jugando;
     private Thread hilo;
@@ -28,8 +30,8 @@ public class Partida implements Runnable {
     private final int tiempoReducido;
 
 
-    public Partida(  JugadorHunting jugador, int cantidadAciertos, int tiempoInicial, int tiempoReducido) {
- 
+    public Partida(DatosHunting datos,  JugadorHunting jugador, int cantidadAciertos, int tiempoInicial, int tiempoReducido) {
+        this.datos = datos;
         this.jugador = jugador;
         this.cantidadAciertos = cantidadAciertos;
         this.tiempoInicial = tiempoInicial;
@@ -74,6 +76,8 @@ public class Partida implements Runnable {
     public boolean verificarPartidaPerdida(){
         int fallosConsecutivos = jugador.getFallosConsecutivos();
         if(fallosConsecutivos == 5){
+            ReportesHunting reportes = new ReportesHunting();
+            reportes.guardarPartida(jugador, tiempoInicial, tiempoReducido);
             return true;
         } return false;
     }
